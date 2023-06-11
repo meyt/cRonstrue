@@ -23,13 +23,15 @@ module.exports = [
   {
     mode: "production",
     entry: entryPoints,
+    experiments: {
+      outputModule: true,
+    },
     output: {
       path: __dirname + "/dist",
       filename: "[name].js",
-      library: libraryName,
-      libraryTarget: "umd",
-      umdNamedDefine: true,
-      globalObject: "globalThis",
+      library: {
+        type: "module",
+      },
     },
     resolve: {
       extensions: [".js", ".ts"],
